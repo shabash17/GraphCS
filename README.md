@@ -1,6 +1,6 @@
 # GraphCS with Multi-Head Structure-Informed Self-Attention
 
-This repository implements **GraphCS** (Graph-based Code Summarization).
+This repository implements **GraphCS** (Graph Attention-Network based Source Code Summarization).
 
 ## ✨ Features
 - **AST-based graph construction** for source code.
@@ -32,7 +32,7 @@ Or, if running in Google Colab:
 
 ## 🚀 Usage
 ### Training
-Run the script to train the model:
+Run the script to train the model. This code trains the model for 3 epochs using the default parameters. You can optimize the model by increasing the number of epochs and fine-tuning the parameters.
 
 ```bash
 python graphcs.py
