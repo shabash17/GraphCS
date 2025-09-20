@@ -334,7 +334,8 @@ def beam_search(model,code_ids,adj,sum_vocab,beam=4,max_len=50,device="cpu"):
 # 6. Main
 # ----------------------------
 def main():
-    # Tiny demo dataset
+    # Tiny demo dataset. This is a toy dataset intended for testing the code. Please provide your full dataset, including code samples and descriptions, for training the model.
+
     pairs=[("def add(a,b): return a+b","add two numbers"),
            ("def power(a,b): return a**b","raise number to power"),
            ("def is_even(n): return n%2==0","check if number is even"),
@@ -453,8 +454,7 @@ def main():
     L=ids.size(1); adj=torch.zeros(1,L,L)
     for u,v in edges:
         if u<L and v<L: adj[0,u,v]=1
-    print("Code:",code)
-    print("Generated summary:",beam_search(model,ids,adj,sum_vocab,device=device))
+
 
 if __name__=="__main__":
     main()
