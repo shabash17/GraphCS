@@ -244,9 +244,7 @@ def sample_sequences(model,code,adj,sum_vocab,device="cpu",max_len=50):
         tgt=torch.tensor(padded_seqs,dtype=torch.long,device=device)
 
         # Added print statements for debugging
-        print(f"Iteration {t}: Length of seqs for each item BEFORE padding: {[len(s) for s in seqs]}")
-        print(f"Iteration {t}: Length of padded_seqs for each item: {[len(s) for s in padded_seqs]}")
-        print(f"Iteration {t}: Shape of tgt tensor: {tgt.shape}")
+ 
 
 
         mask=_gen_causal_mask(tgt.size(1),device)
@@ -449,7 +447,7 @@ def main():
     train_model_raml(model,loader,opt,sum_vocab,epochs=3,device=device)
 
     # Test generation
-    code="def add(a,b): return a+b"
+    code="def split_by_space(s): return s.split()"
     nodes,edges=build_graph_from_python_ast(code)
     ids=torch.tensor([code_vocab.encode(nodes)])
     L=ids.size(1); adj=torch.zeros(1,L,L)
