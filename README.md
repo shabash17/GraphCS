@@ -67,6 +67,88 @@ On the included toy dataset, the model successfully learns to generate functiona
 
 ---
 
+
+# GraphCS + RAML Code Summarization - Testing
+
+This README explains how to run the **test** for the GraphCS  using BLEU, METEOR, and ROUGE-L metrics.
+
+---
+
+## 1. Prerequisites
+
+Make sure you have Python 3.8+ installed and the following packages:
+
+```bash
+pip install torch torchvision torchaudio
+pip install nltk tqdm rouge-score
+```
+
+Download NLTK data if not already installed:
+
+```python
+import nltk
+nltk.download('punkt')
+```
+
+---
+
+## 2. Files
+
+- `test_graphcs.py` : Test script for evaluating the model.
+- `graphcs.pt` : Trained model checkpoint.
+- `your_training_module.py` : Contains GraphCS model, dataset, collate functions, etc.
+
+---
+
+## 3. Running the Test
+
+Run the test script using:
+
+```bash
+python test_graphcs.py --ckpt graphcs.pt --beam 4 --device cpu
+```
+
+or if you have a GPU:
+
+```bash
+python test_graphcs.py --ckpt graphcs.pt --beam 4 --device cuda
+```
+
+**Arguments:**
+
+- `--ckpt` : Path to the trained model checkpoint.
+- `--beam` : Beam size for beam search (default = 4).
+- `--device` : Device to run the test on (`cpu` or `cuda`).
+
+---
+
+## 4. Test Output
+
+The script will print for each sample:
+
+- Reference summary (`Ref`)
+- Predicted summary (`Pred`)
+
+At the end, it prints average metrics over all test samples:
+
+```
+Evaluated <num_samples> samples
+BLEU (avg):   XX.XX
+METEOR (avg): XX.XX
+ROUGE-L (avg): XX.XX
+```
+
+---
+
+## 5. Notes
+
+- Replace the test dataset inside `test_graphcs.py` with your own code-summary pairs.
+- Ensure the checkpoint `graphcs.pt` matches the vocabulary used in training.
+- You can adjust `beam` size to improve output quality (larger beam → slower inference).
+
+---
+
+
 ## 🔧 Requirements
 - Python 3.8+
 - PyTorch ≥ 1.10
