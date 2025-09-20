@@ -44,8 +44,6 @@ Training uses:
 
 By default, the model trains for **3 epochs** on the toy dataset.
 
-### Testing
-After training, the script generates summaries using **beam search**:
 
 ---
 
@@ -53,7 +51,6 @@ After training, the script generates summaries using **beam search**:
 ```
 graphcs.py              # Main training & inference script
 README.md               # Project documentation
-requirements.txt        # Dependencies
 ```
 
 ---
@@ -68,9 +65,7 @@ On the included toy dataset, the model successfully learns to generate functiona
 ---
 
 
-# GraphCS + RAML Code Summarization - Testing
-
-This README explains how to run the **test** for the GraphCS  using BLEU, METEOR, and ROUGE-L metrics.
+# Testing
 
 ---
 
