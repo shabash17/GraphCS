@@ -485,15 +485,7 @@ def main():
     train_model_raml(model,train_loader,opt,sum_vocab,epochs=5,device=device,
                      theta1=0.1,theta2=0.9, raml_lambda=0.85, raml_samples=2)
 
-    # ---- Test ----
-    nodes,edges=build_graph_from_python_ast(code)
-    ids=torch.tensor([code_vocab.encode(nodes)])
-    L=ids.size(1); adj=torch.zeros(1,L,L)
-    for u,v in edges:
-        if u<L and v<L: adj[0,u,v]=1
 
-    model.load_state_dict(torch.load("best_gascs_raml.pt",map_location=device))
-    summary=beam_search(model,ids,adj,sum_vocab,device=device)
 
 
 if __name__=="__main__":
