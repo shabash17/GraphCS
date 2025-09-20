@@ -447,14 +447,6 @@ def main():
     opt=torch.optim.Adam(model.parameters(),1e-3)
     train_model_raml(model,loader,opt,sum_vocab,epochs=3,device=device)
 
-    # Test generation
-    code="def split_by_space(s): return s.split()"
-    nodes,edges=build_graph_from_python_ast(code)
-    ids=torch.tensor([code_vocab.encode(nodes)])
-    L=ids.size(1); adj=torch.zeros(1,L,L)
-    for u,v in edges:
-        if u<L and v<L: adj[0,u,v]=1
-
-
+    
 if __name__=="__main__":
     main()

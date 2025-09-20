@@ -486,7 +486,6 @@ def main():
                      theta1=0.1,theta2=0.9, raml_lambda=0.85, raml_samples=2)
 
     # ---- Test ----
-    code="def power(a,b): return a**b"
     nodes,edges=build_graph_from_python_ast(code)
     ids=torch.tensor([code_vocab.encode(nodes)])
     L=ids.size(1); adj=torch.zeros(1,L,L)
@@ -495,7 +494,7 @@ def main():
 
     model.load_state_dict(torch.load("best_gascs_raml.pt",map_location=device))
     summary=beam_search(model,ids,adj,sum_vocab,device=device)
-    print("Generated summary:",summary)
+
 
 if __name__=="__main__":
     main()
